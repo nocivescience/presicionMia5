@@ -19,9 +19,13 @@ function createBall(ballsP){
         ball.x+=ball.speed;
         const ballsT=document.createElement("div");
         ballsT.classList.add("ball");
+        const angle=Math.atan2(ball.y, ball.x);
+        if (angle<0) {
+            angle+=2*Math.PI;
+        }
         ballsT.style.cssText=`
             border: 2px solid ${ball.color};
-            transform: translate(${ball.x}px, ${ball.y}px);
+            transform: translate(${ball.x}px, ${ball.y}px) rotate(${angle}rad);
         `;
         containerEl.appendChild(ballsT);
     })
